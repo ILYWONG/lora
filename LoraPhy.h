@@ -1,0 +1,13 @@
+class loarphy
+{
+private:
+	
+	
+public:
+		
+	
+	
+	
+	
+	
+}
