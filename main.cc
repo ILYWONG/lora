@@ -1,3 +1,9 @@
+#include "ns3/core-module.h"
+#include "ns3/simulator-module.h"
+#include "ns3/node-module.h"
+#include "ns3/helper-module.h"
+
+
 #include"LoraPhyelper.h"
 #include"LoraPhy.h"
 #include"LoraNetDevice.h"
@@ -35,8 +41,7 @@ void main()
 										not_running,m_nPackets,m_packetsSent,\
 										(*devices)[0],0	);
 	//gatewayapp,ÕÍ≥…≈‰÷√
-	
-	
+		
 	Myapp app_m_node=MyApp();
 	
 	for(int j=1;j<node_num;j++)

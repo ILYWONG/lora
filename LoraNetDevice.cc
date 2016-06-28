@@ -1,9 +1,10 @@
 #include "LoraNetDevice.h"
-LoraNetDevice::Receive(Ptr<Packet>p,Ptr<LoraNetDevice>sender )
+LoraNetDevice::Receive(Ptr<Packet>p,uint32_t nodeID)
 {
 	  //调用数据包的拷贝函数，获得新的数据包，并获得设备的ID号。
 	  //解析就结束了
-	  std::cout<<"接受到数据包占位"<<"\n"<<endle;	
+	  //这个函数是在channel中调用的，channel
+	  std::cout<<"接受到数据包占位"<<"收到来自id="<<nodeid<<"的数据包"<<endle;	
 }
 LoraNode * LoraNetDevice::GetNode()
 {
