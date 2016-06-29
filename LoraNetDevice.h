@@ -23,9 +23,9 @@ public:
 	//返回本netdevice绑定的node
 private:	
 		//自己是挂在那个node下面的	
-	std::vector<Node*> node_index;
+	std::vector<Ptr<Node>> node_index;
 		//自己的channel
-	std::vector<LoraChannel*> LoraChannel;
+	std::vector<Ptr<LoraChannel>> LoraChannel;
 
 
 };

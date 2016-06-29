@@ -24,12 +24,12 @@ void main()
 	const uint32_t m_packetsSent=10000;//这个是包上限值
 	
 	
-	NodeContainer *nodes=new NodeContainer();
+	Ptr<NodeContainer>nodes(new NodeContainer());
   (*nodes).Create (node_num);
 
   LoraHelper LoraHelper_m;
   NetDeviceContainer devices;
-	LoraChannel* lora_channel_m=LoraChannelHelper::MakeLoraChannel();
+	Ptr<LoraChannel>lora_channel_m(LoraChannelHelper::MakeLoraChannel());
   devices = LoraHelper_m.install(nodes,lora_channel_m);
 	//绑定完成，devices里面有是含有所有的信息
 	

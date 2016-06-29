@@ -13,7 +13,7 @@ Node* LoraNetDevice::GetNode()
 	else
 		return node_index[0];
 }
-int LoraNetDevice::bind(Lorachannel* channel_m)
+int LoraNetDevice::bind(Ptr<Lorachannel> channel_m)
 {
 	//绑定channel
 	//std::vector<LoraChannel*> LoraChannel;
@@ -31,7 +31,7 @@ int LoraNetDevice::bind(Lorachannel* channel_m)
 
 }
 
-int LoraNetDevice::bind(Node *nodeptr)
+int LoraNetDevice::bind(Ptr<Node>nodeptr)
 {
 	if(node_index.size()!=0)
 	{
@@ -47,13 +47,12 @@ int LoraNetDevice::bind(Node *nodeptr)
 
 }
 
-int  LoraNetDevice::Send (packet)
+int  LoraNetDevice::Send (Ptr<Packet> packet_re)
 {
 	//因为netdevice是有channel的指针的，所以是可以在这里封装channel的send
 	
 		//std::vector<LoraChannel*> LoraChannel;
 		//bool LoraChannel::TransmitStart (Ptr< Packet > p, uint32_t srcId)
-		LoraChannel[0].TransmitStart();
+		(*LoraChannel[0]).TransmitStart(packet_re,(*(node_index[0]).GetId()));
 		
-	
 }
