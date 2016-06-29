@@ -6,15 +6,12 @@ LoraNetDevice::Receive(Ptr<Packet>p,uint32_t nodeID)
 	  //这个函数是在channel中调用的，channel
 	  std::cout<<"接受到数据包占位"<<"收到来自id="<<nodeid<<"的数据包"<<endle;	
 }
-LoraNode * LoraNetDevice::GetNode()
+Node* LoraNetDevice::GetNode()
 {
 	if(node_index.size()==0)
 		return NULL;
 	else
 		return node_index[0];
-
-
-
 }
 int LoraNetDevice::bind(Lorachannel* channel_m)
 {
@@ -34,7 +31,7 @@ int LoraNetDevice::bind(Lorachannel* channel_m)
 
 }
 
-int LoraNetDevice::bind(LoraNode *nodeptr)
+int LoraNetDevice::bind(Node *nodeptr)
 {
 	if(node_index.size()!=0)
 	{

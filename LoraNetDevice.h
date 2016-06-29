@@ -1,4 +1,5 @@
 #include"LoraChannle.h"
+
 #include "ns3/core-module.h"
 #include "ns3/simulator-module.h"
 #include "ns3/node-module.h"
@@ -10,17 +11,21 @@ class LoraNetDevice
 {
 	
 public:
-	Receive(Ptr<Packet>p,Ptr<LoraNetDevice>sender );
-	//void ns3::CsmaNetDevice::Receive(Ptr<Packet>p,Ptr<CsmaNetDevice>sender )
-	int bind(LoraNode *nodeptr,int LoraNodeID);//将设备加载到当前的网络设备上	
-	LoraNode * LoraNetDevice::GetNode ();
-	int LoraNetDevice::bind(LoraNode *nodeptr);
-	int 
+	void Receive(Ptr<Packet>p,uint32_t sender );
+	//接受报文函数，channel里面存的是netdevice
+	int bind(Node *nodeptr);
+	//将节点加载到当前的网络设备上	
+	int bind(LoraChannel* channel);
+	//重载,这里应该是绑定channel。
+	Node* GetNode();
+	//netdevice里面是有node的，这个函数支持返回node类型，先不实现这个函数
+	//std::vector< Ptr< Node > > 	m_nodes <-nodecontainer里面的
+	//返回本netdevice绑定的node
 private:	
 		//自己是挂在那个node下面的	
-		std::vector<LoraNode*> node_index;
+	std::vector<Node*> node_index;
 		//自己的channel
-		std::vector<LoraChannel*> LoraChannel;
+	std::vector<LoraChannel*> LoraChannel;
 
 
 };
