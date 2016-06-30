@@ -1,17 +1,17 @@
 #include "LoraNetDevice.h"
-LoraNetDevice::Receive(Ptr<Packet>p,uint32_t nodeID)
+void LoraNetDevice::Receive(Ptr<Packet>p,uint32_t nodeID)
 {
 	  //调用数据包的拷贝函数，获得新的数据包，并获得设备的ID号。
 	  //解析就结束了
 	  //这个函数是在channel中调用的，channel
 	  std::cout<<"接受到数据包占位"<<"收到来自id="<<nodeid<<"的数据包"<<endle;	
 }
-Node* LoraNetDevice::GetNode()
+Ptr<Node> LoraNetDevice::GetNode()
 {
 	if(node_index.size()==0)
 		return NULL;
 	else
-		return node_index[0];
+		return node_index;
 }
 int LoraNetDevice::bind(Ptr<Lorachannel> channel_m)
 {
@@ -24,7 +24,7 @@ int LoraNetDevice::bind(Ptr<Lorachannel> channel_m)
 	}
 	else
 	{
-		LoraChannel.push_back(channel_m);
+		LoraChannel=channel_m;
 		std::<<"info"<<"绑定netdevice到channel"<<endl;
 		return 1;
 	}
@@ -40,7 +40,7 @@ int LoraNetDevice::bind(Ptr<Node>nodeptr)
 	}
 	else
 	{
-		node_index.push_back(nodeptr);
+		node_index=nodeptr;
 		std::cout<<"info"<<"netdevice绑定到channel"<<end;
 		return 1;
 	}
@@ -53,6 +53,6 @@ int  LoraNetDevice::Send (Ptr<Packet> packet_re)
 	
 		//std::vector<LoraChannel*> LoraChannel;
 		//bool LoraChannel::TransmitStart (Ptr< Packet > p, uint32_t srcId)
-		(*LoraChannel[0]).TransmitStart(packet_re,(*(node_index[0]).GetId()));
+		LoraChannel->TransmitStart(packet_re,(node_index->GetId()));
 		
 }

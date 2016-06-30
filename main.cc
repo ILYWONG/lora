@@ -30,7 +30,7 @@ void main()
   LoraHelper LoraHelper_m;
   NetDeviceContainer devices;
 	Ptr<LoraChannel>lora_channel_m(LoraChannelHelper::MakeLoraChannel());
-  devices = LoraHelper_m.install(nodes,lora_channel_m);
+  devices = LoraHelper_m.install(lora_channel_m,nodes);
 	//绑定完成，devices里面有是含有所有的信息
 	
 	lora_channel_m->init_set_netdevice_lora(nodes);
